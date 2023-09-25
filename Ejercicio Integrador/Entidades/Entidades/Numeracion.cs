@@ -52,34 +52,35 @@ namespace Entidades
         private static string DecimalABinario(int valor)
         {
             string retornoDecimalBinario = string.Empty;
-
-            while (valor != 0)
+            if (valor >= 0)
             {
-                if (valor % 2 == 0)
+                do
                 {
-                    retornoDecimalBinario = "0" + retornoDecimalBinario;
+                    retornoDecimalBinario = (valor % 2) + retornoDecimalBinario;
+                    valor /= 2;
                 }
-                else
-                {
-                    retornoDecimalBinario = "1" + retornoDecimalBinario;
-                }
-                valor /= 2;
+                while (valor >= 2);
+                retornoDecimalBinario = valor + retornoDecimalBinario;
 
+                return retornoDecimalBinario;
             }
-            return retornoDecimalBinario;
+            else
+            {
+                return "Numero invalido";
+            }
         }
         private string DecimalABinario(string valor)
         {
-            if (int.TryParse(valor, out int val))
+            if (!(int.TryParse(valor, out int val) && val < 0))
             {
                 return Numeracion.DecimalABinario(val);
             }
-            return "Error";
+            return "Numero invalido";
         }
 
         private bool EsBinario(string valor)
         {
-            foreach (var item in valor)
+            foreach (char item in valor)
             {
                 if (!(item == '0' || item == '1'))
                 {
@@ -91,27 +92,20 @@ namespace Entidades
 
         private void InicializarValores(string valor, ESistema sistema)
         {
-            double val;
-            if (EsBinario(valor))
+            if (EsBinario(valor) && sistema == ESistema.Binario)
             {
-                val = BinarioADecimal(valor);
-                this.valorNumerico = val;
+                this.valorNumerico = BinarioADecimal(valor);
             }
-            else if (!(double.TryParse(valor, out val)))
+            else if (!(double.TryParse(valor, out valorNumerico)))
             {
                 this.valorNumerico = double.MinValue;
-            }
-            else
-            {
-                this.valorNumerico = val;
             }
             this.sistema = sistema;
         }
 
         public Numeracion(double valor, ESistema sistema)
+        : this(valor.ToString(), sistema)
         {
-            this.sistema = sistema;
-            this.valorNumerico = valor;
         }
 
         public Numeracion(string valor, ESistema sistema)
@@ -119,43 +113,51 @@ namespace Entidades
             InicializarValores(valor, sistema);
         }
 
-        /* public string ConvertirA(ESistema sistema)
-         {
-
-         }*/
-        public static bool operator !=(ESistema sistema, Numeracion numeracion)
+        public string ConvertirA(ESistema sistema)
         {
-            return !(sistema == numeracion.sistema);
+            if (sistema == ESistema.Decimal)
+            {
+                return this.valorNumerico.ToString();
+            }
+            else
+            {
+                return this.DecimalABinario(valorNumerico.ToString());
+            }
         }
+        
         public static bool operator ==(ESistema sistema, Numeracion numeracion)
         {
             return (sistema == numeracion.sistema);
         }
+        public static bool operator !=(ESistema sistema, Numeracion numeracion)
+        {
+            return !(sistema == numeracion);
+        }
 
+        public static bool operator ==(Numeracion n1, Numeracion n2)
+        {
+            return (n1.sistema == n2.sistema);
+        }
         public static bool operator !=(Numeracion n1, Numeracion n2)
         {
             return !(n1 == n2);
         }
-        public static bool operator ==(Numeracion n1, Numeracion n2)
-        {
-            return (n1 == n2);
-        }
 
         public static Numeracion operator -(Numeracion n1, Numeracion n2)
         {
-            return n1 - n2;
+            return new Numeracion(n1.valorNumerico - n2.valorNumerico, ESistema.Decimal);
         }
         public static Numeracion operator *(Numeracion n1, Numeracion n2)
         {
-            return n1 * n2;
+            return new Numeracion(n1.valorNumerico * n2.valorNumerico, ESistema.Decimal);
         }
         public static Numeracion operator /(Numeracion n1, Numeracion n2)
         {
-            return n1 / n2;
+            return new Numeracion(n1.valorNumerico / n2.valorNumerico, ESistema.Decimal);
         }
         public static Numeracion operator +(Numeracion n1, Numeracion n2)
         {
-            return n1 + n2;
+            return new Numeracion(n1.valorNumerico + n2.valorNumerico, ESistema.Decimal);
         }
     }
 }

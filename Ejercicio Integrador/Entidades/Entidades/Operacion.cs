@@ -37,7 +37,18 @@
 
         public Numeracion Operar(char operador)
         {
-                   
+            switch (operador)
+            {
+                case '-':
+                    return primerOperando - segundoOperando;
+                case '*':
+                    return primerOperando * segundoOperando;
+                case '/':
+                    return primerOperando / segundoOperando;
+                default:
+                    return primerOperando + segundoOperando;
+            }
+
         }
     }
 }

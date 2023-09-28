@@ -64,6 +64,7 @@
             rdbDecimal.TabStop = true;
             rdbDecimal.Text = "Decimal";
             rdbDecimal.UseVisualStyleBackColor = true;
+            rdbDecimal.CheckedChanged += rdbDecimal_CheckedChanged;
             // 
             // rdbBinario
             // 
@@ -75,6 +76,7 @@
             rdbBinario.TabStop = true;
             rdbBinario.Text = "Binario";
             rdbBinario.UseVisualStyleBackColor = true;
+            rdbBinario.CheckedChanged += rdbBinario_CheckedChanged;
             // 
             // grpSistema
             // 
@@ -125,6 +127,7 @@
             txtPrimerOperador.ShortcutsEnabled = false;
             txtPrimerOperador.Size = new Size(181, 23);
             txtPrimerOperador.TabIndex = 7;
+            txtPrimerOperador.TextChanged += txtPrimerOperador_TextChanged;
             // 
             // txtSegundoOperador
             // 
@@ -132,6 +135,7 @@
             txtSegundoOperador.Name = "txtSegundoOperador";
             txtSegundoOperador.Size = new Size(181, 23);
             txtSegundoOperador.TabIndex = 8;
+            txtSegundoOperador.TextChanged += txtSegundoOperador_TextChanged;
             // 
             // cmbOperacion
             // 
@@ -152,6 +156,7 @@
             btnOperar.TabIndex = 11;
             btnOperar.Text = "Operar";
             btnOperar.UseVisualStyleBackColor = false;
+            btnOperar.Click += btnOperar_Click;
             // 
             // btnLimpiar
             // 
@@ -162,6 +167,7 @@
             btnLimpiar.TabIndex = 12;
             btnLimpiar.Text = "Limpiar";
             btnLimpiar.UseVisualStyleBackColor = false;
+            btnLimpiar.Click += btnLimpiar_Click;
             // 
             // btnCerrar
             // 
@@ -172,6 +178,7 @@
             btnCerrar.TabIndex = 13;
             btnCerrar.Text = "Cerrar";
             btnCerrar.UseVisualStyleBackColor = false;
+            btnCerrar.Click += btnCerrar_Click;
             // 
             // FrmCalculadora
             // 
@@ -190,13 +197,14 @@
             Controls.Add(lblPrimerOperador);
             Controls.Add(grpSistema);
             Controls.Add(lblResultado);
-            Enabled = false;
             FormBorderStyle = FormBorderStyle.FixedSingle;
             MaximizeBox = false;
             MinimizeBox = false;
             Name = "FrmCalculadora";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Calculadora de German Bathory";
+            FormClosing += FrmCalculadora_FormClosing;
+            Load += FrmCalculadora_Load;
             grpSistema.ResumeLayout(false);
             grpSistema.PerformLayout();
             ResumeLayout(false);

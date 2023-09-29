@@ -33,15 +33,16 @@ namespace MiCalculadora
 
         private void btnOperar_Click(object sender, EventArgs e)
         {
-            if (!(double.TryParse(txtPrimerOperador.Text, out double primerOperador)) || !(double.TryParse(txtSegundoOperador.Text, out double segundoOperador)))
+            if (!double.TryParse(txtPrimerOperador.Text, out double primerOperador) || !(double.TryParse(txtSegundoOperador.Text, out double segundoOperador)))
             {
                 MessageBox.Show("Ingrese números válidos", "Aceptar", MessageBoxButtons.OK);
                 this.resultado = null;
             }
             else if (primerOperando is not null && segundoOperando is not null)
             {
+                char.TryParse(cmbOperacion.SelectedItem.ToString(), out char operador);
                 this.calculadora = new Operacion(primerOperando, segundoOperando);
-                this.resultado = calculadora.Operar(cmbOperacion.Text[0]);
+                this.resultado = calculadora.Operar(operador);
                 SetResultado();
             }
         }
@@ -49,6 +50,7 @@ namespace MiCalculadora
         private void FrmCalculadora_Load(object sender, EventArgs e)
         {
             cmbOperacion.SelectedIndex = 0;
+            rdbDecimal.Checked = true;
         }
 
         private void FrmCalculadora_FormClosing(object sender, FormClosingEventArgs e)
@@ -65,8 +67,9 @@ namespace MiCalculadora
         {
             if (rdbBinario.Checked)
             {
-                sistema = Numeracion.ESistema.Binario;
+                this.sistema = Numeracion.ESistema.Binario;
                 SetResultado();
+
             }
         }
 
@@ -74,28 +77,33 @@ namespace MiCalculadora
         {
             if (rdbDecimal.Checked)
             {
-                sistema = Numeracion.ESistema.Decimal;
+                this.sistema = Numeracion.ESistema.Decimal;
                 SetResultado();
             }
         }
 
         private void SetResultado()
         {
-            if (this.resultado is not null)
+            if (resultado is not null)
             {
-                lblResultado.Text = "Resultado: " + this.resultado.ConvertirA(sistema);
+                lblResultado.Text = "Resultado: " + resultado.ConvertirA(sistema);
             }
 
         }
 
         private void txtPrimerOperador_TextChanged(object sender, EventArgs e)
         {
-            primerOperando = new(txtPrimerOperador.Text, Numeracion.ESistema.Decimal);
+            primerOperando = new Numeracion(txtPrimerOperador.Text, Numeracion.ESistema.Decimal);
         }
 
         private void txtSegundoOperador_TextChanged(object sender, EventArgs e)
         {
-            segundoOperando = new(txtSegundoOperador.Text, Numeracion.ESistema.Decimal);
+            segundoOperando = new Numeracion(txtSegundoOperador.Text, Numeracion.ESistema.Decimal);
+
+        }
+
+        private void lblOperacion_Click(object sender, EventArgs e)
+        {
 
         }
     }

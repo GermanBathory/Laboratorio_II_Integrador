@@ -75,8 +75,7 @@ namespace Entidades
         private static string DecimalABinario(int valor)
         {
             string retornoDecimalBinario = string.Empty;
-            if (valor >= 0)
-            {
+            
                 do
                 {
                     retornoDecimalBinario = (valor % 2) + retornoDecimalBinario;
@@ -86,11 +85,7 @@ namespace Entidades
                 retornoDecimalBinario = valor + retornoDecimalBinario;
 
                 return retornoDecimalBinario;
-            }
-            else
-            {
-                return "Numero invalido";
-            }
+            
         }
 
         /// <summary>
@@ -100,9 +95,9 @@ namespace Entidades
         /// <returns>Cadena con numero convertido a binario</returns>
         private string DecimalABinario(string valor)
         {
-            if (!(int.TryParse(valor, out int val) && val < 0))
+            if (!(double.TryParse(valor, out double val) && val < 0))
             {
-                return Numeracion.DecimalABinario(val);
+                return Numeracion.DecimalABinario((int)val);
             }
             return "Numero invalido";
         }

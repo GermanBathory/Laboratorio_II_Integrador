@@ -51,7 +51,7 @@
             lblResultado.Location = new Point(37, 40);
             lblResultado.Name = "lblResultado";
             lblResultado.Size = new Size(192, 50);
-            lblResultado.TabIndex = 0;
+            lblResultado.TabIndex = 9;
             lblResultado.Text = "Resultado:";
             // 
             // rdbDecimal
@@ -60,7 +60,7 @@
             rdbDecimal.Location = new Point(6, 40);
             rdbDecimal.Name = "rdbDecimal";
             rdbDecimal.Size = new Size(82, 24);
-            rdbDecimal.TabIndex = 1;
+            rdbDecimal.TabIndex = 11;
             rdbDecimal.TabStop = true;
             rdbDecimal.Text = "Decimal";
             rdbDecimal.UseVisualStyleBackColor = true;
@@ -72,7 +72,7 @@
             rdbBinario.Location = new Point(135, 40);
             rdbBinario.Name = "rdbBinario";
             rdbBinario.Size = new Size(74, 24);
-            rdbBinario.TabIndex = 2;
+            rdbBinario.TabIndex = 12;
             rdbBinario.TabStop = true;
             rdbBinario.Text = "Binario";
             rdbBinario.UseVisualStyleBackColor = true;
@@ -86,7 +86,7 @@
             grpSistema.Location = new Point(260, 158);
             grpSistema.Name = "grpSistema";
             grpSistema.Size = new Size(281, 78);
-            grpSistema.TabIndex = 3;
+            grpSistema.TabIndex = 10;
             grpSistema.TabStop = false;
             grpSistema.Text = "Representar resultado en:";
             // 
@@ -97,7 +97,7 @@
             lblPrimerOperador.Location = new Point(21, 286);
             lblPrimerOperador.Name = "lblPrimerOperador";
             lblPrimerOperador.Size = new Size(181, 30);
-            lblPrimerOperador.TabIndex = 4;
+            lblPrimerOperador.TabIndex = 6;
             lblPrimerOperador.Text = "Primer operador:";
             // 
             // lblOperacion
@@ -107,8 +107,9 @@
             lblOperacion.Location = new Point(311, 286);
             lblOperacion.Name = "lblOperacion";
             lblOperacion.Size = new Size(120, 30);
-            lblOperacion.TabIndex = 5;
+            lblOperacion.TabIndex = 7;
             lblOperacion.Text = "Operación:";
+            lblOperacion.Click += lblOperacion_Click;
             // 
             // lblSegundoOperador
             // 
@@ -117,7 +118,7 @@
             lblSegundoOperador.Location = new Point(533, 286);
             lblSegundoOperador.Name = "lblSegundoOperador";
             lblSegundoOperador.Size = new Size(204, 30);
-            lblSegundoOperador.TabIndex = 6;
+            lblSegundoOperador.TabIndex = 8;
             lblSegundoOperador.Text = "Segundo operador:";
             // 
             // txtPrimerOperador
@@ -126,7 +127,7 @@
             txtPrimerOperador.Name = "txtPrimerOperador";
             txtPrimerOperador.ShortcutsEnabled = false;
             txtPrimerOperador.Size = new Size(181, 23);
-            txtPrimerOperador.TabIndex = 7;
+            txtPrimerOperador.TabIndex = 0;
             txtPrimerOperador.TextChanged += txtPrimerOperador_TextChanged;
             // 
             // txtSegundoOperador
@@ -134,7 +135,7 @@
             txtSegundoOperador.Location = new Point(533, 330);
             txtSegundoOperador.Name = "txtSegundoOperador";
             txtSegundoOperador.Size = new Size(181, 23);
-            txtSegundoOperador.TabIndex = 8;
+            txtSegundoOperador.TabIndex = 2;
             txtSegundoOperador.TextChanged += txtSegundoOperador_TextChanged;
             // 
             // cmbOperacion
@@ -145,7 +146,7 @@
             cmbOperacion.Location = new Point(277, 330);
             cmbOperacion.Name = "cmbOperacion";
             cmbOperacion.Size = new Size(181, 23);
-            cmbOperacion.TabIndex = 10;
+            cmbOperacion.TabIndex = 1;
             // 
             // btnOperar
             // 
@@ -153,7 +154,7 @@
             btnOperar.Location = new Point(21, 398);
             btnOperar.Name = "btnOperar";
             btnOperar.Size = new Size(208, 33);
-            btnOperar.TabIndex = 11;
+            btnOperar.TabIndex = 3;
             btnOperar.Text = "Operar";
             btnOperar.UseVisualStyleBackColor = false;
             btnOperar.Click += btnOperar_Click;
@@ -164,7 +165,7 @@
             btnLimpiar.Location = new Point(268, 398);
             btnLimpiar.Name = "btnLimpiar";
             btnLimpiar.Size = new Size(201, 33);
-            btnLimpiar.TabIndex = 12;
+            btnLimpiar.TabIndex = 4;
             btnLimpiar.Text = "Limpiar";
             btnLimpiar.UseVisualStyleBackColor = false;
             btnLimpiar.Click += btnLimpiar_Click;
@@ -175,7 +176,7 @@
             btnCerrar.Location = new Point(525, 398);
             btnCerrar.Name = "btnCerrar";
             btnCerrar.Size = new Size(199, 33);
-            btnCerrar.TabIndex = 13;
+            btnCerrar.TabIndex = 5;
             btnCerrar.Text = "Cerrar";
             btnCerrar.UseVisualStyleBackColor = false;
             btnCerrar.Click += btnCerrar_Click;

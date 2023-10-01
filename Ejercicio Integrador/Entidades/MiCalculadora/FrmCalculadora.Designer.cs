@@ -142,7 +142,7 @@
             // 
             cmbOperacion.DropDownStyle = ComboBoxStyle.DropDownList;
             cmbOperacion.FormattingEnabled = true;
-            cmbOperacion.Items.AddRange(new object[] { "+", "-", "*", "/" });
+            cmbOperacion.Items.AddRange(new object[] { "", "+", "-", "*", "/" });
             cmbOperacion.Location = new Point(277, 330);
             cmbOperacion.Name = "cmbOperacion";
             cmbOperacion.Size = new Size(181, 23);

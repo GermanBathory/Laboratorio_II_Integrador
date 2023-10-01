@@ -87,8 +87,11 @@ namespace MiCalculadora
             if (resultado is not null)
             {
                 lblResultado.Text = "Resultado: " + resultado.ConvertirA(sistema);
+                if ((string)cmbOperacion.SelectedItem == "/" && txtSegundoOperador.Text == "0")
+                {
+                    lblResultado.Text = "Resultado: NaN";
+                }
             }
-
         }
 
         private void txtPrimerOperador_TextChanged(object sender, EventArgs e)
@@ -104,7 +107,6 @@ namespace MiCalculadora
 
         private void lblOperacion_Click(object sender, EventArgs e)
         {
-
         }
     }
 }

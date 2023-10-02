@@ -43,6 +43,11 @@ namespace MiCalculadora
                 char.TryParse(cmbOperacion.SelectedItem.ToString(), out char operador);
                 this.calculadora = new Operacion(primerOperando, segundoOperando);
                 this.resultado = calculadora.Operar(operador);
+                if (cmbOperacion.SelectedItem.ToString() == "")
+                {
+                    MessageBox.Show("Ingrese operador", "Aceptar", MessageBoxButtons.OK);
+                    this.resultado = null;
+                }
                 SetResultado();
             }
         }
